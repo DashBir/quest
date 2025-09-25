@@ -61,6 +61,12 @@
       overflow-x: auto;
       line-height: 1.4;
     }
+    /* Забороняємо копіювання для правильного коду */
+    .no-copy {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
     .error {
       background-color: #ffebee;
       padding: 15px;
@@ -131,6 +137,17 @@
       }
     }
   </style>
+
+  <script>
+    // Вимикаємо контекстне меню та копіювання для блоку правильного коду
+    document.addEventListener("DOMContentLoaded", () => {
+      const noCopyBlock = document.querySelector(".no-copy");
+      if (noCopyBlock) {
+        noCopyBlock.addEventListener("contextmenu", e => e.preventDefault());
+        noCopyBlock.addEventListener("copy", e => e.preventDefault());
+      }
+    });
+  </script>
 </head>
 <body>
 <div class="header-image">
@@ -163,7 +180,7 @@
   <h2>Код з помилками:</h2>
   <div class="code-area">
     &lt;!DOCTYPE html&gt;
-    &lt;html lang="uk"&gt;
+    &lt;html lang="ук"&gt;
     &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;title&gt;Фінеас і Ферб Пригода&lt;/title&gt;
@@ -218,7 +235,7 @@
   </div>
 
   <h2>Правильний код (для порівняння після виправлення):</h2>
-  <div class="code-area">
+  <div class="code-area no-copy">
     &lt;!DOCTYPE html&gt;
     &lt;html lang="uk"&gt;
     &lt;head&gt;
@@ -260,12 +277,19 @@
     margin: 0 auto;
     max-width: 300px;
     }
+    .under-caption {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #0288d1;
+    }
     &lt;/style&gt;
     &lt;/head&gt;
     &lt;body&gt;
     &lt;div class="container"&gt;
     &lt;h1&gt;Вітаємо у світі Фінеаса і Ферба!&lt;/h1&gt;
     &lt;img class="character-img" src="https://www.tvinsider.com/wp-content/uploads/images/content/promos/phineasferbfarewell.jpg" alt="Фінеас і Ферб"&gt;
+    &lt;div class="under-caption"&gt;або для команди №6 ФОТОЗОНА&lt;/div&gt;
     &lt;div class="secret-message"&gt;
     &#10071;Підказку до наступної локації шукайте на даній сторінці&#10071;
     &lt;/div&gt;
